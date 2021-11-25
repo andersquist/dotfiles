@@ -128,3 +128,6 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 source $HOME/.cargo/env
+
+# For tfswitch
+export PATH=$PATH:/Users/anders/bin
