@@ -1,1 +1,1 @@
-{{ (index (lastpassRaw "devenv/npmrc") 0).note }}
+{{ (index (lastpassRaw "devenv/npmrc") 0).note | b64dec  }}
