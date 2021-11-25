@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Fish-like syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 for file in ~/.{paths,prompt,exports,aliases,functions,extra,authshistoryopts}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
@@ -120,13 +120,9 @@ zstyle ':completion::complete:*' use-cache 1
 # color code completion!!!!  Wohoo!
 zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
 
-if type kubectl > /dev/null ; then
-	source <(kubectl completion zsh)
-fi
-
 # AWS
-source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh/site-functions/aws_zsh_completer.sh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
