@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install Volta
 curl https://get.volta.sh | bash
 
