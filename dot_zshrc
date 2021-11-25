@@ -126,39 +126,9 @@ fi
 
 # AWS
 source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
-
-if [ -d "${HOME}/.kube/config.d" ];then
-  KUBECFG="${HOME}/.kube/config"
-  for file in ${HOME}/.kube/config.d/*.yaml; do
-    KUBECFG="${KUBECFG}:${file}"
-  done
-  export KUBECONFIG="${KUBECFG}"
-fi
-
-[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/anders/source/github/serverless-webpack/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/anders/source/github/serverless-webpack/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/anders/source/github/serverless-webpack/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/anders/source/github/serverless-webpack/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/anders/source/github/serverless-webpack/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/anders/source/github/serverless-webpack/node_modules/tabtab/.completions/slss.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
- source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 source $HOME/.cargo/env
-
-china-proxy () {
-  ssh -v -N -D 9090 ubuntu@52.83.22.77
-}
