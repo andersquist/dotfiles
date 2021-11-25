@@ -1,0 +1,22 @@
+prepend_path() {
+    for arg in "$@"; do
+        if [[ ":${PATH}:" != *":${arg}:"* ]]; then
+            export PATH="${arg}${PATH:+":$PATH"}"
+        fi
+    done
+}
+
+append_path() {
+    for arg in "$@"; do
+        if [[ ":${PATH}:" != *":${arg}:"* ]]; then
+            export PATH="${PATH:+"$PATH:"}${arg}"
+        fi
+    done
+}
+
+# AWS SSO
+sso() {
+    unset AWS_PROFILE
+    export AWS_PROFILE=$1
+    aws sts get-caller-identity &> /dev/null || aws sso login || (unset AWS_PROFILE && aws-configure-sso-profile --profile $1)
+}

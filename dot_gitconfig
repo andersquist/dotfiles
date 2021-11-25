@@ -1,0 +1,114 @@
+[alias]
+    l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    d = diff --patch-with-stat
+    c = clone --recursive
+    #ca = !git add -A && git commit -av
+    ci = commit
+    co = checkout
+    go = checkout -B
+    tags = tag -l
+    remotes = remote -v
+    undopush = push -f origin HEAD^:master
+    pom = push origin master
+    s = status -sb
+    st = status
+    branches = branch -a
+	up = pull --rebase --autostash
+
+[apply]
+    # Detect whitespace errors when applying a patch
+    # whitespace = fix
+
+[core]
+    # Use custom `.gitignore` and `.gitattributes`
+	excludesfile = /Users/anders/.gitignore_global
+    attributesfile = ~/.gitattributes
+    # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
+    #whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	editor = /usr/bin/vim
+	autocrlf = input
+  pager=delta
+	
+[color]
+    # Use colors in Git commands that are capable of colored output when outputting to the terminal
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[merge]
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+[help]
+	autocorrect = 20
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+	plus-color = "#012800"
+	minus-color = "#340001"
+	syntax-theme = Monokai Extended
+	side-by-side = false
+	line-numbers = true
+	whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+
+[rerere]
+	enabled = 1
+
+# Use `origin` as the default remote on the `master` branch in all cases
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+
+# URL shorthands
+[url "git@github.com:"]
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+    insteadOf = "github:"
+[url "git@gist.github.com:"]
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+[url "git://gist.github.com/"]
+    insteadOf = "gist:"
+[push]
+	default = current
+[credential]
+	helper = osxkeychain
+[user]
+	name = Anders Quist
+	email = anders@qinfo.se
+[pull]
+	rebase = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/anders/.stCommitMsg
+[init]
+	defaultBranch = master
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

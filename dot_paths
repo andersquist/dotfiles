@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+export PATH=/usr/local/opt/findutils/libexec/gnubin:${PATH}
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
+export PATH=/usr/local/opt/grep/libexec/gnubin:${PATH}
+export PATH=/usr/local/opt/gnu-getopt/bin:${PATH}
+export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}
+export PATH="/usr/local/opt/python/libexec/bin:/usr/local/bin:$PATH"
+
+export PATH=${PATH}:~/source/tools/bin
+export CODE_DIR=~/source
+export GOPATH=~/go
+export PATH=${PATH}:${GOPATH}/bin
+export PATH=${PATH}:${HOME}/.composer/vendor/bin
+export PATH="$PATH:/Users/anders/.dotnet/tools"
+
+export WORKON_HOME=~/.virtualenvs
